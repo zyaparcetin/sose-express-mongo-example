@@ -13,13 +13,13 @@ mongoose
   .then(() => console.log('connection established'))
   .catch(error => console.log('not connected:', error))
 
-const Panda = mongoose.model('Panda', { name: String, age: Number })
+/* const Panda = mongoose.model('Panda', { name: String, age: Number })
 
 async function main() {
   const pandas = await Panda.find({ age: { $lte: 21 } })
   console.log(pandas)
 }
 
-main()
+main() */
 // const panda = new Panda({ name: 'anna', age: 19 })
 // panda.save().then(() => console.log(`we have a new panda, ${panda.name}!`))
