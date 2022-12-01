@@ -12,16 +12,18 @@ router.get('/', async (req, res) => {
 
 /* GET initialize */
 router.get('/initialize', async (req, res) => {
-  const kerem = await User.create({ name: 'kerem', age: 11 })
-  const armagan = await User.create({ name: 'armagan', age: 36 })
+  const Kerem = await User.create({ name: 'Kerem', age: 11 })
+  const Mete = await User.create({ name: 'Mete', age: 7 })
 
-  const teddyBearProduct = await Product.create({ name: 'teddyBear', price: 14.99 })
-  // const // tüm productlari yaz!
+  const teddyBearProduct = await Product.create({ name: 'teddyBear', price: 19.99 })
+  const kittyProduct = await Product.create({ name: 'kitty', price: 14.99 })
+  const bunnyProduct = await Product.create({ name: 'bunny', price: 9.99 })
+  const frogletProduct = await Product.create({ name: 'froglet', price: 9.99 })
 
-  await armagan.likeProduct(teddyBearProduct)
-  await armagan.addToBasket(teddyBearProduct)
+  await Kerem.likeProduct(teddyBearProduct)
+  await Kerem.addToBasket(teddyBearProduct)
 
-  console.log(armagan)
+  console.log(Kerem)
   res.sendStatus(200)
 })
 
