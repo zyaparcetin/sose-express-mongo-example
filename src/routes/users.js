@@ -32,7 +32,8 @@ router.post('/', async (req, res) => {
 
 module.exports = router
 
-/* const express = require('express')
+/* my project
+const express = require('express')
 const { users } = require('../models')
 
 const router = express.Router() */
