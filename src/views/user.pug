@@ -7,7 +7,7 @@ block content
   h2 Photos (#{user.photos.length})
 
   each photo in user.photos 
-    h3 #{photo}
+    h3 #{photo.filename}
     if photo.likedBy-length == 0
       p no likes yet! 
     else 
