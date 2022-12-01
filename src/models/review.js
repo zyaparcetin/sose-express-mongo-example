@@ -1,18 +1,28 @@
-class Product {
-  constructor(name, price) {
-    this.name = name
-    this.price = price
-    this.likedBy = []
-    this.reviews = []
-  }
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
-  get detail() {
-    return `
-      Product: ${this.name} , ${this.price}
-      Liked by: ${this.likedBy}
-      Reviewed by: ${this.reviewedBy}
-      `
+const reviewSchema = new mongoose.Schema({
+  text: String,
+  rate: Number,
+  author: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+})
+
+reviewSchema.plugin(autopopulate)
+module.exports = mongoose.model('Review', reviewSchema)
+
+/* class Review {
+  constructor(text, rate, author) {
+    this.text = text
+    this.rate = rate
+    this.author = author
   }
 }
 
-module.exports = Product
+module.exports = Review
+*/
