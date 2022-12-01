@@ -15,14 +15,3 @@ const reviewSchema = new mongoose.Schema({
 
 reviewSchema.plugin(autopopulate)
 module.exports = mongoose.model('Review', reviewSchema)
-
-/* class Review {
-  constructor(text, rate, author) {
-    this.text = text
-    this.rate = rate
-    this.author = author
-  }
-}
-
-module.exports = Review
-*/
