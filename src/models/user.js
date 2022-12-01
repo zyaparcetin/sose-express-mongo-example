@@ -53,7 +53,7 @@ class User {
   }
 
   async review(product, text, rate) {
-    const review = new Review(text, rate, this.name) // In terminal:'Review' is not defined. [Ln 57, Co:54]
+    const review = new Review(text, rate, this.name)
     this.reviews.push(review)
     product.reviews.push(review)
     await this.save()
