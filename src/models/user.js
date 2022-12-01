@@ -11,28 +11,64 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  bio: String,
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+  basket: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+  /* bio: String,
   createdAt: {
     type: Date,
     default: new Date(),
-  },
+  }, */
 })
 
 class User {
-  greet(person) {
-    console.log(`Hello ${person.name}, this is ${this.name}`)
+  greet() {
+    console.log(`Hello ${this.name}, welcome to Joy Toys!`)
   }
 
-  get profile() {
+  likeProduct(product) {
+    this.likes.push(product)
+    product.likedBy.push(this.name)
+  }
+
+  addToBasket(product) {
+    this.basket.push(product)
+  }
+
+  /* review(product, text, rate) {
+    const review = new Review(text, rate, this.name) // In terminal:'Review' is not defined. [Ln 57, Co:54]
+    this.reviews.push(review)
+    product.reviews.push(review)
+  } */
+
+  /* get profile() { // Armagan's code
     return `
       # ${this.name} (${this.age})
       Bio: ${this.bio}
-    `
+    ` 
   }
 
-  set profile(newValue) {
+  set profile(newValue) { // Armagan's code
     throw new Error(`profile is only a getter. You can't override it with ${newValue}.`)
-  }
+  } */
 }
 
 userSchema.loadClass(User)
