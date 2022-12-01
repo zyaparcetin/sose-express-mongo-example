@@ -40,19 +40,24 @@ class User {
     console.log(`Hello ${this.name}, welcome to Joy Toys!`)
   }
 
-  likeProduct(product) {
+  async likeProduct(product) {
     this.likes.push(product)
     product.likedBy.push(this.name)
+    await this.save()
+    await product.save()
   }
 
-  addToBasket(product) {
+  async addToBasket(product) {
     this.basket.push(product)
+    await this.save()
   }
 
-  review(product, text, rate) {
+  async review(product, text, rate) {
     const review = new Review(text, rate, this.name) // In terminal:'Review' is not defined. [Ln 57, Co:54]
     this.reviews.push(review)
     product.reviews.push(review)
+    await this.save()
+    await review.save()
   }
 
   /* get profile() { // Armagan's code
