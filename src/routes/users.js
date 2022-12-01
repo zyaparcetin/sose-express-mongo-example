@@ -1,5 +1,6 @@
 const express = require('express')
 const User = require('../models/user')
+// const Product = require('../models/product') bunu yazdim ama hata verdi (products.js'e gerek kalmamasi icin mi bunu yaiyoruz?)
 
 const router = express.Router()
 
@@ -17,6 +18,20 @@ router.get('/initialize', async (req, res) => {
   const steve = await User.create({ name: 'steve', age: 21 })
   steve.bio = 'An awesome hacker who has seen it all, and now sharing them all with you.'
 
+  /* gitlab'daki kodda var 
+  const berlinPhoto = await Photo.create({ filename: 'berlin.jpg' })
+  const munichPhoto = await Photo.create({ filename: 'munich.jpg' })
+
+  // videoda: 
+  berlinPhoto.save()
+  munichPhoto.save()
+  
+  await steve.addPhoto(berlinPhoto)
+  await steve.addPhoto(munichPhoto)
+
+  await armagan.likePhoto(berlinPhoto)
+  await mihri.likePhoto(berlinPhoto)
+*/
   steve.greet(mihri)
   steve.greet(armagan)
 
