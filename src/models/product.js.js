@@ -20,7 +20,19 @@ const productSchema = new mongoose.Schema({
   ],
 })
 
+class Product {
+  get detail() {
+    return `
+      Product: ${this.name} , ${this.price}
+      Liked by: ${this.likedBy}
+      Reviewed by: ${this.reviewedBy}
+      `
+  }
+}
+
+productSchema.loadClass(Product)
 productSchema.plugin(autopopulate)
+
 module.exports = mongoose.model('Product', productSchema)
 
 /* class Product {
