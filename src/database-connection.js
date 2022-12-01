@@ -24,7 +24,7 @@ main() */
 // const panda = new Panda({ name: 'anna', age: 19 })
 // panda.save().then(() => console.log(`we have a new panda, ${panda.name}!`))
 
-/* my index.js
+/* my index.js under models
 const User = require('./user')
 const Product = require('./product')
 // const Review = require('./review')
