@@ -1,9 +1,17 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
-const photoSchema = new mongoose.Schema({
-  filename: String,
+const productSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
   likedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      autopopulate: true,
+    },
+  ],
+  reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -12,8 +20,8 @@ const photoSchema = new mongoose.Schema({
   ],
 })
 
-photoSchema.plugin(autopopulate)
-module.exports = mongoose.model('Photo', photoSchema)
+productSchema.plugin(autopopulate)
+module.exports = mongoose.model('Product', productSchema)
 
 /* class Product {
   constructor(name, price) {
