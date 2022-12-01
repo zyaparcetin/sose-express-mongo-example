@@ -8,7 +8,7 @@ block content
 
   each photo in user.photos 
     h3 #{photo.filename}
-    if photo.likedBy-length == 0
+    if photo.likedBy.length == 0
       p no likes yet! 
     else 
-      p #{photo.likedBy.join(', ')}
+      p #{photo.likedBy.map(user => user.name).join(', ')}
