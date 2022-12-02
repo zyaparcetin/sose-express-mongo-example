@@ -9,6 +9,8 @@ require('./database-connection')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const productsRouter = require('./routes/products')
+// const reviewsRouter = require('./routes/reviews') reviews sinifina gerek var mi baktiktan sonra ekle ya da sil!
 
 const app = express()
 
